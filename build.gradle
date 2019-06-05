@@ -393,13 +393,14 @@ project(':iceberg-presto-runtime') {
         exclude 'org/objectweb/**'
         exclude 'org/apache/thrift/**'
         exclude 'META-INF/services/org.apache.hadoop**'
+        exclude 'org/apache/commons/logging/**'
+        exclude 'org/apache/commons/codec/**'
         exclude 'com/thoughtworks/**'
         exclude 'org/slf4j/**'
         exclude 'org/znerd/**'
         exclude 'org/xerial/**'
         exclude 'org/tukaani/**'
         exclude 'org/objectweb/**'
-        exclude 'org/apache/commons/**'
         exclude 'it/unimi/**'
         exclude 'io/airlift/**'
         exclude 'com/google/**'
@@ -412,7 +413,9 @@ project(':iceberg-presto-runtime') {
         exclude 'common-version-info.properties'
         exclude 'core-default.xml'
         exclude 'org/apache/hadoop/application-classloader.properties'
+        exclude 'org/apache/orc/**'
         exclude '**application-classloader.properties'
+        exclude 'org/apache/hadoop/security/token/delegation/**'
 
         configurations = [project.configurations.shadow]
         from(project.sourceSets.main.output)
