@@ -413,14 +413,19 @@ project(':iceberg-presto-runtime') {
         exclude 'core-default.xml'
         exclude 'org/apache/hadoop/application-classloader.properties'
         exclude '**application-classloader.properties'
+        exclude '**application-classloader.properties'
+        exclude 'parquet.thrift'
+        exclude 'org/joda/time/**'
 
         configurations = [project.configurations.shadow]
         from(project.sourceSets.main.output)
 
         relocate 'org.apache.avro', 'org.apache.iceberg.shaded.org.apache.avro'
+        relocate 'org.apache.parquet', 'org.apache.iceberg.shaded.org.apache.parquet'
         relocate 'org.apache.parquet.avro', 'org.apache.iceberg.shaded.org.apache.parquet.avro'
         relocate 'org.apache.hadoop.hive', 'org.apache.iceberg.shaded.org.apache.hadoop.hive'
         relocate 'org.apache.hive', 'org.apache.iceberg.shaded.org.apache.hive'
+        relocate 'org.apache.orc', 'org.apache.iceberg.shaded.org.apache.orc'
         archiveName = "iceberg-presto-runtime-${version}.${extension}"
     }
 }
