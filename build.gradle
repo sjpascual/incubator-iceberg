@@ -352,7 +352,7 @@ project(':iceberg-runtime') {
     zip64 true
 
     // Relocate dependencies to avoid conflicts
-    // relocate 'com.google.common', 'com.netflix.bdp.shaded.com.google.common'
+    relocate 'com.google.common', 'org.apache.iceberg.shaded.com.google.common'
     relocate 'com.fasterxml', 'org.apache.iceberg.shaded.com.fasterxml'
     relocate 'org.apache.avro', 'org.apache.iceberg.shaded.org.apache.avro'
     relocate 'org.apache.parquet.avro', 'org.apache.iceberg.shaded.org.apache.parquet.avro'
