@@ -85,6 +85,7 @@ subprojects {
     scalaVersion = '2.11'
     sparkVersion = '2.4.0'
     caffeineVersion = "2.7.0"
+    guavaVersion = '16.0.1'
   }
 
   sourceCompatibility = '1.8'
@@ -92,7 +93,7 @@ subprojects {
 
   dependencies {
     compileOnly 'org.slf4j:slf4j-api:1.7.5'
-    compileOnly 'com.google.guava:guava:16.0.1'
+    compileOnly "com.google.guava:guava:$guavaVersion"
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.slf4j:slf4j-simple:1.7.5'
@@ -235,6 +236,8 @@ project(':iceberg-orc') {
 
     compile("org.apache.orc:orc-core:$orcVersion:nohive") {
       exclude group: 'org.apache.hadoop', module: 'hadoop-common'
+      exclude group: 'org.apache.hadoop', module: 'hadoop-hdfs'
+      exclude group: 'org.apache.hive', module: 'hive-storage-api'
     }
 
 
@@ -330,6 +333,7 @@ project(':iceberg-runtime') {
     shadow project(':iceberg-pig')
     shadow project(':iceberg-hive')
 
+    shadow "com.google.guava:guava:$guavaVersion"
     shadow "org.apache.avro:avro:$avroVersion"
     shadow "org.apache.parquet:parquet-avro:$parquetVersion"
   }
